@@ -1,3 +1,5 @@
+# products.py
+
 class Product:
     """
     A class to represent a product available in the store.
@@ -69,7 +71,7 @@ class Product:
         Returns:
             str: A string representation of the product.
         """
-        return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
+        return f"{self.name}, Price: ${self.price}, Quantity: {self.quantity}"
 
     def buy(self, quantity: int) -> float:
         """
@@ -89,4 +91,6 @@ class Product:
         if quantity > self.quantity:
             raise ValueError("Not enough quantity available.")
         self.quantity -= quantity
+        if self.quantity == 0:
+            self.deactivate()
         return self.price * quantity
